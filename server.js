@@ -8,7 +8,7 @@ const bodyParser = require('body-parser')
 const api = require('./routes/api.js')
 
 const DB_NAME = 'devdb'
-const COLLECTION_NAME_1 = 'coll1'
+const COLLECTION_NAME_1 = 'tetrisScores'
 const COLLECTION_NAME_2 = 'coll2'
 
 const DB_URI = process.env.MONGODB_URI || `mongodb://localhost:27017/${DB_NAME}`

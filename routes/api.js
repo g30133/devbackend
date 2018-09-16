@@ -26,9 +26,9 @@ router.get('/sanity', onSanity)
 
 /////////////////////////////////////////////////////////////////
 
-async function onApi1Load(req, res) {
-  console.log('onApi1Load()')
-  const collection = req.collectionStore['coll1']
+async function onTetrisScoreLoadAll(req, res) {
+  console.log('onTetrisScoresLoad()')
+  const collection = req.collectionStore['tetrisScores']
 
   try {
     const result = await collection.find().toArray()
@@ -38,16 +38,16 @@ async function onApi1Load(req, res) {
     console.log(err)
   }
 }
-router.get('/api1/load', onApi1Load)
+router.get('/tetrisScores/loadall', onTetrisScoreLoadAll)
 
-async function onApi1Save(req, res) {
-  console.log('onApi1Save()')
-  const collection = req.collectionStore['coll1']
+async function onTetrisScoreSave(req, res) {
+  console.log('onTetrisScoreSave()')
+  const collection = req.collectionStore['tetrisScores']
 
   const name = req.body.name
-  const text = req.body.text
+  const score = req.body.score
 
-  const newEntry = { name: name, text: text }
+  const newEntry = { name: name, score: score }
 
   try {
     const result = await collection.insertOne(newEntry)
@@ -57,11 +57,11 @@ async function onApi1Save(req, res) {
     console.log(err)
   }
 }
-router.post('/api1/save', jsonParser, onApi1Save);
+router.post('/tetrisScores/save', jsonParser, onTetrisScoreSave);
 
-async function onApi1Delete(req, res) {
+async function onTetrisScoresDelete(req, res) {
   console.log('onApi1Delete()')
-  const collection = req.collectionStore['coll1']
+  const collection = req.collectionStore['tetrisScores']
 
   try {
     const result = await collection.deleteMany()
@@ -71,7 +71,7 @@ async function onApi1Delete(req, res) {
     console.log(err)
   }
 }
-router.delete('/api1', jsonParser, onApi1Delete);
+router.delete('/tetrisScores', jsonParser, onTetrisScoresDelete);
 
 ///////////////////////////////////////////////////////////////////
 

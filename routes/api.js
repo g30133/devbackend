@@ -60,7 +60,7 @@ async function onTetrisScoreSave(req, res) {
 router.post('/tetrisScores/save', jsonParser, onTetrisScoreSave);
 
 async function onTetrisScoresDelete(req, res) {
-  console.log('onApi1Delete()')
+  console.log('onTetrisScoresDelete()')
   const collection = req.collectionStore['tetrisScores']
 
   try {
